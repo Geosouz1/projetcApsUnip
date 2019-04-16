@@ -1,0 +1,18 @@
+{
+  "name": "sistemas-distribuidos",
+  "version": "1.0.0",
+  "description": "Projeto Aps 2 semestre",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "team_unip7semestre2019",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

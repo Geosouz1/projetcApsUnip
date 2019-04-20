@@ -3,7 +3,7 @@ const server = express()
 var oi;
 
 var myLogger = function (req, res, next) {
-     oi = 'oi teste';
+     oi = ' Unity Iniciou';
     next();
   };
   
@@ -17,10 +17,19 @@ server.post('/teste', (req,res) =>{
 res.send('funciona')
 })
 
+server.put('/upload',(req,res)=> {
+	oi = myData;
+	res.send('unity Iniciou')
+})
+
 server.use(myLogger);
 
 server.get('/teste1', (req, res) =>{
     res.send('<h1>'+oi+' </h1>')
+})
+
+server.get('/unity',(req, res) =>{
+	res.send('pula');
 })
 
 server.listen(3001, () =>{

@@ -13,6 +13,7 @@
   "author": "team_unip7semestre2019",
   "license": "MPL-2.0",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "pg": "^7.10.0"
   }
 }

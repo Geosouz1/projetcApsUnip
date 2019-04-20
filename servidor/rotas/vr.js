@@ -1,11 +1,13 @@
 const express = require('express');
 const rota = express.Router();
 
-rota.get('/',(req, res) => {
-    return res.send({message: 'Tudo OK com o método get da vr'})
+
+
+rota.post('/estado',(req, res) => {
+    return res.send({senario: 'cenario1', estado: 1})
 });
 
-rota.post('/',(req, res) => {
-    return res.send({message: 'Tudo OK com o método post da vr'})
-});
+rota.post('/acao',(req, res) => {
+    return res.send({acao:'aqui talvez uma possivel acao'});
+})
 module.exports= rota;

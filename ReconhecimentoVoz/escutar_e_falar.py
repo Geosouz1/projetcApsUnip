@@ -1,7 +1,7 @@
 import speech_recognition as sr
 from gtts import gTTS
 from playsound import playsound
-import requests
+import requests as re
 
 #Funcao responsavel por falar 
 def cria_audio(audio):
@@ -32,10 +32,16 @@ def ouvir_microfone():
 		#Apos alguns segundos, retorna a frase falada
 		print("Voce disse: " + frase)
 		#Caso nao tenha reconhecido o padrao de fala, exibe esta mensagem
-	except sr.UnkownValueError:
+	except sr.UnknownValueError:
 		print("Nao entendi")
 
 	return frase
 
+def comunicaHttp(frase):
+	r = re.get('http://localhost:3001/envia', params={'frase': frase})
+	print(r)
+
+
 frase = ouvir_microfone()
 cria_audio(frase)
+comunicaHttp(frase)

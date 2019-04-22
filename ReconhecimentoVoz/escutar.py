@@ -11,7 +11,6 @@ def ouvir_microfone():
 		#Armazena a informacao de audio na variavel
 		audio = microfone.listen(source)
 
-
 	try:
 		#Passa o audio para o reconhecedor de padroes do speech_recognition
 		frase = microfone.recognize_google(audio,language='pt-BR')

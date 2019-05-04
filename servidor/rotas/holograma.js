@@ -1,22 +1,21 @@
 const express = require('express');
 const rota = express.Router();
+const voz = require('../rotas/voz');
+var error;
 
 
 
-rota.post('/',(req, res) => {
+rota.get('/',(req, res) => {
     return res.send({message: 'Tudo OK com o método post do holograma'})
 });
 
-rota.post('/ola',(req, res) =>{
-    
-    return res.send({name: 'O nome dela é ...'});
-});
-
-rota.post('/acao', (req, res) =>{
-
-    return res.send({acao1: 'Aqui vai a qual acao tomar...'});
+rota.post('/envia',(req, res)=>{
+return res.send({string:"Aqui vai uma variavel"});
 })
 
+rota.post('/recebe',(req, res)=>{
+return res.send({string:error});
+})
 
 
 

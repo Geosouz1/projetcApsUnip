@@ -1,5 +1,4 @@
-
-# -*- coding: utf-8 -*-
+# coding: utf-8
 
 import speech_recognition as sr
 from gtts import gTTS
@@ -7,13 +6,16 @@ from playsound import playsound
 import requests as re
 
 #Funcao responsavel por falar 
-def cria_audio(audio):
-	tts = gTTS("Voce disse"+audio,lang='pt-BR')
+def cria_audio(audio, resposta):
+	tts = gTTS(audio,lang='pt-BR')
 	#Salva o arquivo de audio
-	tts.save('audios/hello.mp3')
+	tts.save('audios/'+resposta+'.mp3')
 	print("Estou aprendendo o que voce disse...")
 	#Da play ao audio
-	playsound('audios/hello.mp3')
+	playsound('audios/'+resposta+'.mp3')
+
+def falar(fala):
+	playsound('audios/'+fala+'.mp3');
 
 
 #Funcao responsavel por ouvir e reconhecer a fala
@@ -44,7 +46,28 @@ def comunicaHttp(frase):
 	r = re.get('http://localhost:3001/envia', params={'frase': frase})
 	print(r)
 
+while (1):
+	frase=ouvir_microfone()
+	if  frase== 'config':
+		falar('config')
+		falar('deseja_fazer')
+		frase=ouvir_microfone()
+		if  frase== 'adicionar resposta':
+			falar('pergunta_usuario')
+			escultar=ouvir_microfone()
+			print(escultar)
+			falar('resposta_para_usuario')
+			fala=ouvir_microfone()
+			print(fala)
+			falar('animacao')
+			animacao=ouvir_microfone()
+			print (animacao)
+			falar('entao')
+			falar('confirmacao_parte1')
+			cria_audio(escultar,'escultar')
+			falar(confirmacao_parte2)
+			cria_audio(fala,'fala')
+		print(frase);
+#cria_audio(frase,nome);
 
-frase = ouvir_microfone()
-cria_audio(frase)
 comunicaHttp(frase)

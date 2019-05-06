@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 
 const FalaSchema = new Schema({
-    id_fala:{type: String, required: true},
+    id_fala:{type: Number, required: true},
      fala:{type: String, required: true},
-    descricao: {type: String}
+    animacao: {type: Number, required: true}
 });
 
 

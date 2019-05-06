@@ -8,9 +8,9 @@ rota.get('/',(req, res)=>{
 });
 
 rota.post('/ouvir',(req, res) =>{
-  const  {id_esculta, esculta, descricao} = req.body;
+  const  {id_esculta, esculta, animacao} = req.body;
   console.log(req.body);
-  if(!id_esculta || !esculta) return res.send({error:'faltando String esculta'});
+  if(!id_esculta || !esculta || !animacao) return res.send({error:'faltando String esculta consukta'});
 
   escultas.findOne({esculta}, (err, data)=>{
       if(err) return res.send({error: 'Erro na pesqusa'});
@@ -24,7 +24,7 @@ rota.post('/ouvir',(req, res) =>{
 });
 
 rota.post('/resposta', (req, res)=>{
-    const{id_fala, fala, descrucao } = req.body;
+    const{id_fala, fala, animacao } = req.body;
     if(!id_fala || !fala) return res.send({error:'Faltando String de fala'});
     falas.findOne({fala}, (err, data) =>{
         if(err) return res.send({error: 'Erro na pesquisa'});

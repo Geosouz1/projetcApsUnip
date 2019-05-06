@@ -1,32 +1,32 @@
 const express = require('express');
 const rota = express.Router();
 const Fala = require('../model/fala');
-var falar="sem voz" ;
+const Ouvir = require('../model/ouvir')
 
 
 rota.get('/',(req, res) => {
-    Fala.find({}, (err,data) =>{
-        if(err) return res.send({error: 'Erro na consulta de usuário'});
-        return res.send(data);
-    });
+    res.send('testando o teste');
 });
 
-rota.post('/create',(req, res)=>{
-    const {fala, nomearquivo, descricao}=req.body;
+rota.post('/ouvir',(req, res) =>{
+    const  {esculta} = req.body;
+    console.log(req.body);
+    if(!esculta) return res.send({error:'Não entendi'});
 
-    if (!fala || !nomearquivo) return res.send({error: 'Dados Insuficientes'});
-
-    Fala.findOne({fala}, (err, data)=>{
-        if(err) return res.send({error: 'Erro ao buscar fala'});
-        if(data) return res.send({error: 'fala já resgistrado!'});
-    
-    
-        Fala.create(req.body, (err, data)=>{
-            if(err) return res.send({error: 'Erro ao criar fala'});
-            return res.send(data);
-        });
+    Ouvir.findOne({esculta}, (err, data)=>{
+        if(err) return res.send({error: 'Erro na pesqusa'});
+        if(data){
+        return res.send({error: data.esculta});
+         }else{
+            return res.send("Não entendi");
+         }
     });
+  });
+  
+rota.post('/falar',(req, res) => {
+return res.send(falar)
 });
 
-    
+
+
 module.exports= rota;
